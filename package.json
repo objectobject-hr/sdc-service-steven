@@ -6,6 +6,9 @@
   "repository": "https://github.com/hrla33-falcons/carousel-recommend-listings.git",
   "author": "Steve McLaughlin <stevejrmc@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon server/app.js"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
