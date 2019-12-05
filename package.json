@@ -1,0 +1,16 @@
+{
+  "name": "carousel-recommend-listings",
+  "version": "1.0.0",
+  "description": "AWayHome: carousel and recommended listings service",
+  "main": "index.js",
+  "repository": "https://github.com/hrla33-falcons/carousel-recommend-listings.git",
+  "author": "Steve McLaughlin <stevejrmc@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.13",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.1"
+  }
+}
