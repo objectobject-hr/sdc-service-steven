@@ -10,13 +10,14 @@ db.once('open', () => {
 });
 
 const listingSchema = new mongoose.Schema({
-  name: String,
+  listingID: Number,
   images: [String],
-  thumbnails: [String],
-  location: String,
-  no_rooms: Number,
+  rooms: Number,
   occupancy: Number,
-  related: [String]
+  reviews: Number,
+  ratings: Number,
+  location: String,
+  similar: [Number]
 });
 
 module.exports.Listing = mongoose.model('Listing', listingSchema);

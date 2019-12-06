@@ -3,7 +3,9 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const port = 3000;
-const db = require('../db').db; // For testing
+
+// Seed database
+require('../db/seed').seed();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
