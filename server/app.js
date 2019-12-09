@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 // TODO: Add necessary middleware
 // TODO: Refactor request
-app.get('/:id', (req, res) => {
+app.get('/carousel-service/:id', (req, res) => {
   let listingID = req.params.id;
   Listing.find({listingID: listingID}, (err, listing) => {
     if (err) {

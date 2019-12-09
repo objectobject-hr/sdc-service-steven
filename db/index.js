@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/carousel-recommended', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
@@ -21,5 +22,3 @@ const listingSchema = new mongoose.Schema({
 });
 
 module.exports.Listing = mongoose.model('Listing', listingSchema);
-
-module.exports.db = db;

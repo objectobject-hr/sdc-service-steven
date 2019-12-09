@@ -89,32 +89,28 @@ module.exports.seed = () => {
     });
   }
 
-  // TODO: Fix updateSimilar function
   //  b) retreive all listings from every state in DB
-  // const updateSimilar = () => {
-  //   states.forEach(state => {
-  //     Listing.find({location: state }, (err, listings) => {
-  //       if (err) {
-  //         return console.error(err);
-  //       }
-  //       listings.forEach(listing => {
-  //         let similar = listings.filter(l => {
-  //           if (l !== listing) {
-  //             return l.listingID;
-  //           }
-  //         });
-  //         Listing.findOneAndUpdate(listing, {similar}, (err, confirm) => {
-  //           if (err) {
-  //             return console.error(err);
-  //           }
-  //         });
-  //       });
-  //
-  //     });
-  //   });
-  // };
-  //
-  // setTimeout(updateSimilar, 7000);
-
   //  c) update the similar field
+  const updateSimilar = () => {
+    states.forEach(state => {
+      Listing.find({location: state }, (err, listings) => {
+        if (err) {
+          return console.error(err);
+        }
+        if (listings.length > 1) {
+          listings.forEach(listing => {
+            let similar = listings.filter(l => l !== listing)
+              .map(l => l.listingID);
+            Listing.findByIdAndUpdate(listing._id, {similar}, (err, updated) => {
+              if (err) {
+                return console.error(err);
+              }
+            });
+          });
+        }
+      });
+    });
+  };
+
+  setTimeout(updateSimilar, 5000);
 };
