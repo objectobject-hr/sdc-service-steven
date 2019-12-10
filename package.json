@@ -2,13 +2,14 @@
   "name": "carousel-recommend-listings",
   "version": "1.0.0",
   "description": "AWayHome: carousel and recommended listings service",
-  "main": "index.js",
+  "main": "app.js",
   "repository": "https://github.com/hrla33-falcons/carousel-recommend-listings.git",
   "author": "Steve McLaughlin <stevejrmc@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "nodemon server/app.js",
-    "seed": "node helpers/seed.js"
+    "seed": "node helpers/seed.js",
+    "build": "webpack -d --watch"
   },
   "dependencies": {
     "aws-sdk": "^2.585.0",
@@ -16,6 +17,14 @@
     "express": "^4.17.1",
     "mongoose": "^5.7.13",
     "morgan": "^1.9.1",
-    "nodemon": "^2.0.1"
+    "nodemon": "^2.0.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-react": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   }
 }
