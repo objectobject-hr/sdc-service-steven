@@ -5,9 +5,10 @@ const bodyParser = require('body-parser');
 const port = 3000;
 const Listing = require('../db').Listing;
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/../dist'));
 
 app.get('/carousel-service/:id', (req, res) => {
   let listingID = req.params.id;
