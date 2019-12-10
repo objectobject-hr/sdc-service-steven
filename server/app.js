@@ -4,10 +4,6 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const port = 3000;
 const Listing = require('../db').Listing;
-const helpers = require('../helpers');
-
-// Retrieve images & seed database
-helpers.dataGenerator();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
