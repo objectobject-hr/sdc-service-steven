@@ -1,14 +1,5 @@
 const Listing = require('./index').Listing;
-module.exports.seed = () => {
-  // Listing Values:
-    // listingID/ number
-    // images/ [strings]
-    // rooms/ number
-    // occupancy/ number > rooms
-    // reviews/ number
-    // ratings/ number
-    // location/ string
-    // similar/ [id/strings]
+module.exports.seed = imgs => {
   // locations:
   const states = [
     'AL',
@@ -66,12 +57,14 @@ module.exports.seed = () => {
   const randomNum = max => {
     return Math.floor(Math.random() * max);
   };
-  // 1. Helper to create a listing:
+  // 1. Helper function:
   const createListing = id => {
     let rooms = randomNum(8) + 1;
+    let images = id < 10 ? imgs[id] : (id < 20 ? imgs[id - 10]: imgs[randomNum(10)]);
     return {
       listingID: id,
       rooms,
+      images,
       occupancy: rooms * 2,
       reviews: randomNum(200) + 1,
       ratings: randomNum(5) + 1,
@@ -89,7 +82,7 @@ module.exports.seed = () => {
     });
   }
 
-  //  b) retreive all listings from every state in DB
+  //  b) retrieve all listings from every state in DB
   //  c) update the similar field
   const updateSimilar = () => {
     states.forEach(state => {
