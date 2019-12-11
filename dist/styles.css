@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+}
+.container div {
+  border: solid 5px #6cabdd;
+  margin: auto;
+}
+
+/*# sourceMappingURL=styles.css.map */
