@@ -1,7 +1,34 @@
-.container {
+// @import 'variables';
+
+.carousel {
+  box-sizing: border-box;
+  aria-hidden: true;
+}
+.main-image-container {
   display: flex;
+  position: relative;
+  width: 100%;
+}
+.main-images-wrapper {
+  display: inline-block;
+  margin: 0 auto;
+  max-height: 800px;
+  min-height: 512px;
+  height: 512px;
+}
+.view-all-button {
+  bottom: 40px;
+  position: absolute;
+  right: 40px;
+}
+.main-images {
+  display: inline-flex;
+  height: 100%;
+  overflow: hidden;
   div {
-    border: solid 5px #6cabdd;
-    margin: auto;
+    cursor: pointer;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-right: 4px;
   }
 }
