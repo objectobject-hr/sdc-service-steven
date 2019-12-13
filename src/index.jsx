@@ -14,6 +14,7 @@ class App extends Component {
     };
     this.getListing = this.getListing.bind(this);
     this.getSimilar = this.getSimilar.bind(this);
+    this.randomNum = this.randomNum.bind(this);
   }
 
   getSimilar(ids) {
@@ -48,8 +49,15 @@ class App extends Component {
     });
   }
 
+  randomNum(max) {
+    return Math.floor(Math.random() * max);
+  };
+
   componentDidMount() {
-    this.getListing(23);
+    // GET random listing
+    // TODO: Remove in Production
+    let id = this.randomNum(100) + 1;
+    this.getListing(id);
   }
 
   render() {
@@ -61,5 +69,5 @@ class App extends Component {
   }
 }
 
-const root = document.getElementById('app');
+const root = document.getElementById('carousel-service');
 ReactDOM.render(<App/>, root);
