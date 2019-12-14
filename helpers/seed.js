@@ -5,7 +5,6 @@ const imgUrlPrfx = 'https://awayhome.s3-us-west-1.amazonaws.com/';
 const Listing = require('../db').Listing;
 
 const seedDB = imgs => {
-  // locations:
   const states = [
     'AK',
     'CA',
@@ -33,13 +32,12 @@ const seedDB = imgs => {
     'VA',
     'WA'
   ];
-  // randomNumHelper:
   const randomNum = max => {
     return Math.floor(Math.random() * max);
   };
   // 1. Helper function:
   const createListing = id => {
-    let rooms = randomNum(8) + 1;
+    let rooms = randomNum(5) + 1;
     let images = id < 10 ? imgs[id] : (id < 20 ? imgs[id - 10]: imgs[randomNum(10)]);
     return {
       listingID: id,
@@ -47,8 +45,8 @@ const seedDB = imgs => {
       images,
       price: randomNum(200) + 75,
       occupancy: rooms * 2,
-      reviews: randomNum(200) + 1,
-      ratings: randomNum(5) + 1,
+      reviews: randomNum(200) + 10,
+      ratings: randomNum(5) + 1.5,
       location: states[randomNum(25)]
     };
   };
@@ -66,27 +64,46 @@ const seedDB = imgs => {
   //  b) retrieve all listings from every state in DB
   //  c) update the similar field
   const updateSimilar = () => {
-    states.forEach(state => {
-      Listing.find({location: state }, (err, listings) => {
-        if (err) {
-          return console.error(err);
-        }
-        if (listings.length > 1) {
-          listings.forEach(listing => {
-            let similar = listings.filter(l => l !== listing)
-              .map(l => l.listingID);
-            Listing.findByIdAndUpdate(listing._id, {similar}, (err, updated) => {
-              if (err) {
-                return console.error(err);
-              }
-            });
-          });
-        }
+    Listing.find((err, listings) => {
+      if (err) {
+        return console.error(err);
+      }
+      listings.forEach(listing => {
+        let start = randomNum(100);
+        let end = start + 5;
+        let similar = listings.slice(start, end)
+          .filter(l => l !== listing)
+          .map(l => l.listingID);
+        Listing.findByIdAndUpdate(listing._id, {similar}, (err, updated) => {
+          if (err) {
+            return console.error('Seed/Update: ',err);
+          }
+        });
       });
     });
-  };
 
-  setTimeout(updateSimilar, 5000);
+    // TODO: For use in production
+    // states.forEach(state => {
+    //   Listing.find({location: state }, (err, listings) => {
+    //     if (err) {
+    //       return console.error(err);
+    //     }
+    //     if (listings.length > 1) {
+    //       listings.forEach(listing => {
+    //         let similar = listings.filter(l => l !== listing)
+    //           .map(l => l.listingID);
+    //         Listing.findByIdAndUpdate(listing._id, {similar}, (err, updated) => {
+    //           if (err) {
+    //             return console.error(err);
+    //           }
+    //         });
+    //       });
+    //     }
+    //   });
+    // });
+
+  };
+  setTimeout(updateSimilar, 4000);
 };
 
 const generateData = () => {
