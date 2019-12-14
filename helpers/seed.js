@@ -7,56 +7,31 @@ const Listing = require('../db').Listing;
 const seedDB = imgs => {
   // locations:
   const states = [
-    'AL',
     'AK',
-    'AZ',
-    'AR',
     'CA',
     'CO',
     'CT',
-    'DE',
     'FL',
     'GA',
     'HI',
-    'ID',
     'IL',
-    'IN',
-    'IA',
-    'KS',
-    'KY',
     'LA',
     'ME',
     'MD',
     'MA',
-    'MI',
-    'MN',
-    'MS',
-    'MO',
-    'MT',
-    'NE',
     'NV',
     'NH',
     'NJ',
     'NM',
     'NY',
     'NC',
-    'ND',
-    'OH',
-    'OK',
     'OR',
-    'PA',
-    'RI',
     'SC',
-    'SD',
-    'TN',
     'TX',
     'UT',
     'VT',
     'VA',
-    'WA',
-    'WV',
-    'WI',
-    'WY'
+    'WA'
   ];
   // randomNumHelper:
   const randomNum = max => {
@@ -70,10 +45,11 @@ const seedDB = imgs => {
       listingID: id,
       rooms,
       images,
+      price: randomNum(200) + 75,
       occupancy: rooms * 2,
       reviews: randomNum(200) + 1,
       ratings: randomNum(5) + 1,
-      location: states[randomNum(50)]
+      location: states[randomNum(25)]
     };
   };
   // 2. loop/ call helper & insert to DB:

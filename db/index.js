@@ -18,6 +18,7 @@ const listingSchema = new mongoose.Schema({
   reviews: Number,
   ratings: Number,
   location: String,
+  price: Number,
   similar: [Number]
 });
 
