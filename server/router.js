@@ -9,8 +9,9 @@ router
         if (err) {
             console.error(err);
         return res.status(404).end();
-        }
+        }else{
         res.status(200).send(listing[0]);
+        }
     });
   });
   
