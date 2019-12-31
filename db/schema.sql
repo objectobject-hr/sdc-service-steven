@@ -2,7 +2,9 @@ DROP DATABASE IF EXISTS cirque;
 
 CREATE DATABASE cirque;
 
-USE cirque;
+\q;
+
+
 
 CREATE TABLE carrusel (
   listingID SERIAL PRIMARY KEY,
