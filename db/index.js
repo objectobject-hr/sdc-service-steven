@@ -7,7 +7,7 @@ const pool = new Pool({
 const getAll = (req, res) => {
   pool.query('SELECT * FROM carrusel', (error, results) => {
     if (error) {
-        throw error
+      throw error
     }
     res.status(200).json(results.rows)
   })
@@ -15,11 +15,8 @@ const getAll = (req, res) => {
 
 const mill = (req, res) => {
   const {images, rooms, occupancy, reviews, ratings, donde, price, mismo} = req.body
-  console.log(images[0])
-
-  pool.query(`INSERT INTO carrusel (images, rooms, occupancy, reviews, ratings, donde, price, mismo) VALUES (ARRAY ['${images[0]}'], ${rooms}, ${occupancy}, ${reviews}, ${ratings}, '${donde}', ${price}, ${mismo})`, (err) => {
+  pool.query(`INSERT INTO carrusel (images, rooms, occupancy, reviews, ratings, donde, price, mismo) VALUES (ARRAY ['${images[0]}', '${images[1]}', '${images[2]}', '${images[3]}', '${images[4]}', '${images[5]}', '${images[6]}', '${images[7]}', '${images[8]}', '${images[9]}', ${rooms}, ${occupancy}, ${reviews}, ${ratings}, '${donde}', ${price}, ${mismo})`, (err) => {
     if (err) {
-      console.error("inside err of mill")
       console.error(err)
     } else {
       res.status(201).send("great success")

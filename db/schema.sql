@@ -2,9 +2,9 @@ DROP DATABASE IF EXISTS cirque;
 
 CREATE DATABASE cirque;
 
-\q;
+\q
 
-
+psql cirque
 
 CREATE TABLE carrusel (
   listingID SERIAL PRIMARY KEY,
