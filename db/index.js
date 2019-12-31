@@ -9,11 +9,26 @@ const getAll = (req, res) => {
     if (error) {
         throw error
     }
-    res.status(200).json(results)
+    res.status(200).json(results.rows)
+  })
+};
+
+const mill = (req, res) => {
+  const {images, rooms, occupancy, reviews, ratings, donde, price, mismo} = req.body
+  console.log(images[0])
+
+  pool.query(`INSERT INTO carrusel (images, rooms, occupancy, reviews, ratings, donde, price, mismo) VALUES (ARRAY ['${images[0]}'], ${rooms}, ${occupancy}, ${reviews}, ${ratings}, '${donde}', ${price}, ${mismo})`, (err) => {
+    if (err) {
+      console.error("inside err of mill")
+      console.error(err)
+    } else {
+      res.status(201).send("great success")
+    }
   })
 };
 
 module.exports.getAll = getAll
+module.exports.mill = mill
 
 
 // Original Index Mongo.

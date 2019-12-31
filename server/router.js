@@ -3,8 +3,9 @@ const db = require('../db');
 
 router
   .route('/carousel-service')
-  .get(db.getAll);
-
+  .get(db.getAll)
+  .post(db.mill)
+  
 router
   .route('/carousel-service/:id')
   .get((req, res) => {
