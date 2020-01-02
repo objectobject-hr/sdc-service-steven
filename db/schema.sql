@@ -15,7 +15,7 @@ CREATE TABLE carrusel (
   ratings int,
   donde varchar(50) NOT NULL,
   price int,
-  mismo int
+  mismo int DEFAULT 0
 );
 
 INSERT INTO carrusel (images, rooms, occupancy, reviews, ratings, donde, price, mismo) VALUES (ARRAY ['https://odis.homeaway.com/odis/listing/41f832e5-2b11-40f9-a025-81fef22082eb.f10.jpg'], 101, 2, 3, 4, 'Tijuana', 60, 5);
