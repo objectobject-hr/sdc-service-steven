@@ -1,33 +1,6 @@
 const mill = require('../db').mill;
 
 const seedDB = () => {
-  const states = [
-      'AK',
-      'CA',
-      'CO',
-      'CT',
-      'FL',
-      'GA',
-      'HI',
-      'IL',
-      'LA',
-      'ME',
-      'MD',
-      'MA',
-      'NV',
-      'NH',
-      'NJ',
-      'NM',
-      'NY',
-      'NC',
-      'OR',
-      'SC',
-      'TX',
-      'UT',
-      'VT',
-      'VA',
-      'WA'
-    ];
   const randomNum = max => {
     return Math.floor(Math.random() * max);
   };
@@ -41,27 +14,37 @@ const seedDB = () => {
     return imgPromises;
   };
   // 1. Helper function:
+  var count = 0;
   const createListing = () => {
     let rooms = randomNum(5) + 1;
     let images = generateData();
+    count++;
     return {
+      id: count,
       images,
       rooms,
       occupancy: rooms * 2,
       reviews: randomNum(200) + 10,
       ratings: randomNum(5) + 1.5,
-      donde: states[randomNum(25)],
       price: randomNum(200) + 50
     };
   };
   // seeder
   const seeder = () => {
-    const req = {
-      body: createListing()
+    // console.log('DROP TABLE IF EXISTS timer;')
+    // console.log('CREATE TEMP TABLE timer (time1 time, time2 time);')
+    // console.log('INSERT INTO timer (time1) select now()::time;')
+    for (var i = 0; i < 1e1; i++) {
+      var {id, images, rooms, occupancy, reviews, ratings, price} = createListing()
+      console.log(rooms, ',', occupancy, ',', reviews)
+      //{${images[0]},${images[1]},${images[2]},${images[3]},${images[4]},${images[5]},${images[6]},${images[7]},${images[8]},${images[9]}}  ${occupancy} ${reviews} ${ratings} ${donde} ${price}
+      // const req = {
+      //   body: createListing()
+      // }
+      //mill(req);
     }
-    for (var i = 0; i < 10; i++) {
-      mill(req);
-    }
+    // console.log('UPDATE timer set time2=now()::time;')
+    // console.log('SELECT time2-time1 as time_Elapsed from timer;')
   }
   seeder();
 };
@@ -156,3 +139,31 @@ seedDB()
 //   seedDB(images);
 // })
 // .catch(e => console.error('aws: ', e));
+
+//const states = [
+//   'AK',
+//   'CA',
+//   'CO',
+//   'CT',
+//   'FL',
+//   'GA',
+//   'HI',
+//   'IL',
+//   'LA',
+//   'ME',
+//   'MD',
+//   'MA',
+//   'NV',
+//   'NH',
+//   'NJ',
+//   'NM',
+//   'NY',
+//   'NC',
+//   'OR',
+//   'SC',
+//   'TX',
+//   'UT',
+//   'VT',
+//   'VA',
+//   'WA'
+// ];

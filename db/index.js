@@ -13,15 +13,19 @@ const getAll = (req, res) => {
   })
 };
 
+var counter = 0;
 const mill = (req) => {
   const {images, rooms, occupancy, reviews, ratings, donde, price} = req.body
-  pool.query(`INSERT INTO carrusel (images, rooms, occupancy, reviews, ratings, donde, price) VALUES (ARRAY ['${images[0]}', '${images[1]}', '${images[2]}', '${images[3]}', '${images[4]}', '${images[5]}', '${images[6]}', '${images[7]}', '${images[8]}', '${images[9]}'], ${rooms}, ${occupancy}, ${reviews}, ${ratings}, '${donde}', ${price})`, (err) => {
-    if (err) {
-      console.error(err)
-    } else {
-      console.log("Great Success!");
-    }
-  })
+  // counter ++;
+  // console.log(`Great Success! ${counter}`);
+  console.log(`INSERT INTO carrusel (images, rooms, occupancy, reviews, ratings, donde, price) VALUES (ARRAY ['${images[0]}', '${images[1]}', '${images[2]}', '${images[3]}', '${images[4]}', '${images[5]}', '${images[6]}', '${images[7]}', '${images[8]}', '${images[9]}'], ${rooms}, ${occupancy}, ${reviews}, ${ratings}, '${donde}', ${price});`)
+  //pool.query
+  // , (err) => {
+  //   if (err) {
+  //     console.error(err)
+  //   } else {
+  //   }
+  // })
 };
 
 module.exports.getAll = getAll
