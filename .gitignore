@@ -4,3 +4,4 @@ helpers/config.json
 dist/bundle.js
 dist/styles.css.map
 yarn-error.log
+data.csv

@@ -18,6 +18,10 @@ const seedDB = () => {
   const createListing = () => {
     let rooms = randomNum(5) + 1;
     let images = generateData();
+    let mismo = []
+    for (var i = 0; i < 5; i++) {
+      mismo.push(randomNum(1e4 + i))
+    }
     count++;
     return {
       id: count,
@@ -25,8 +29,9 @@ const seedDB = () => {
       rooms,
       occupancy: rooms * 2,
       reviews: randomNum(200) + 10,
-      ratings: randomNum(5) + 1.5,
-      price: randomNum(200) + 50
+      ratings: randomNum(5) + 1,
+      price: randomNum(200) + 50,
+      mismo
     };
   };
   // seeder
@@ -34,9 +39,10 @@ const seedDB = () => {
     // console.log('DROP TABLE IF EXISTS timer;')
     // console.log('CREATE TEMP TABLE timer (time1 time, time2 time);')
     // console.log('INSERT INTO timer (time1) select now()::time;')
-    for (var i = 0; i < 1e1; i++) {
-      var {id, images, rooms, occupancy, reviews, ratings, price} = createListing()
-      console.log(rooms, ',', occupancy, ',', reviews)
+    for (var i = 0; i < 1e7; i++) {
+      var {id, images, rooms, occupancy, reviews, ratings, price, mismo} = createListing()
+      console.log(`"{${images[0]}, ${images[1]}, ${images[2]}, ${images[3]}, ${images[4]}, ${images[5]}, ${images[6]}, ${images[7]}, ${images[8]}, ${images[9]}}",`, rooms, ',', occupancy, ',', reviews, ',', ratings, ',', price, `, "{${mismo[0]}, ${mismo[1]}, ${mismo[2]}, ${mismo[3]}, ${mismo[4]}}"`)
+      // , ${images[1]}, ${images[2]}, ${images[3]}, {${images[4]}, ${images[5]}, ${images[6]}, ${images[7]}, ${images[8]}, ${images[9]}}",`, rooms, ',', occupancy, ',', reviews, ',', ratings, ',', price, `, "{${mismo[0]}, ${mismo[1]}, ${mismo[2]}, ${mismo[3]}, ${mismo[4]}}
       //{${images[0]},${images[1]},${images[2]},${images[3]},${images[4]},${images[5]},${images[6]},${images[7]},${images[8]},${images[9]}}  ${occupancy} ${reviews} ${ratings} ${donde} ${price}
       // const req = {
       //   body: createListing()
@@ -45,6 +51,7 @@ const seedDB = () => {
     }
     // console.log('UPDATE timer set time2=now()::time;')
     // console.log('SELECT time2-time1 as time_Elapsed from timer;')
+    //, rooms, occupancy, reviews, ratings, price, mismo
   }
   seeder();
 };
