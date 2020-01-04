@@ -4,6 +4,18 @@ const pool = new Pool({
   database: 'cirque',
 })
 
+const getById = (req, res) => {
+  let listingID = req.params.id;
+  pool.query(`SELECT * FROM carrusel WHERE listingid IN(${listingID})`, (err, results) => {
+    if (err) {
+      console.error(err);
+      res.status(404).end();
+    } else {
+      res.status(200).send(results);
+    }
+  });
+}
+
 const getAll = (req, res) => {
   pool.query('SELECT * FROM carrusel', (error, results) => {
     if (error) {
@@ -13,7 +25,7 @@ const getAll = (req, res) => {
   })
 };
 
-var counter = 0;
+// var counter = 0;
 const mill = (req) => {
   const {images, rooms, occupancy, reviews, ratings, donde, price} = req.body
   // counter ++;
@@ -30,6 +42,7 @@ const mill = (req) => {
 
 module.exports.getAll = getAll
 module.exports.mill = mill
+module.exports.getById = getById
 
 
 // Original Index Mongo.
