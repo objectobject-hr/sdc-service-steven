@@ -12,6 +12,7 @@ DataRetriever(data => {
     images,
     similarListings
   } = data;
+  console.log(similarListings);
   ReactDOM.render(<Main images={images}/>, mainService);
   ReactDOM.render(<Similar listings={similarListings}/>, similarService);
 });

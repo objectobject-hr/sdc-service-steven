@@ -11,7 +11,9 @@
     "start": "nodemon server/app.js",
     "seed": "node helpers/seed.js",
     "sass": "sass --watch src/assets/sass:dist",
-    "build": "webpack -d --watch"
+    "build": "webpack -d --watch",
+    "csv": "node postgreSeed.js > data.csv",
+    "mongoseed": "mongoimport -d cirque -c carrusel --type csv --file /Users/sfcontra/Documents/hrcourse/sdc-proxy-steven/sdc-service-steven/helpers/data.csv -f listingID,images,rooms,occupancy,reviews,ratings,price,mismo --numInsertionWorkers 8"
   },
   "dependencies": {
     "@babel/core": "^7.7.5",
@@ -23,6 +25,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "mongo": "^0.1.0",
     "mongoose": "^5.7.13",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.1",

@@ -18,12 +18,13 @@ const DataRetriever = (cb) => {
   let id = randomNum(100) + 1;
   axios.get(`/carousel-service/${id}`)
     .then(response => {
-      images = response.data.images;
-      getSimilar(response.data.similar, similarListings => {
+      images = response.data.rows[0].images;
+      getSimilar(response.data.rows[0].mismo, similarListings => {
         let data = {
           images,
           similarListings
         }
+      
         cb(data);
       });
     })

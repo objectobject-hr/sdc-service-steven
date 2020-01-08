@@ -36,22 +36,10 @@ const seedDB = () => {
   };
   // seeder
   const seeder = () => {
-    // console.log('DROP TABLE IF EXISTS timer;')
-    // console.log('CREATE TEMP TABLE timer (time1 time, time2 time);')
-    // console.log('INSERT INTO timer (time1) select now()::time;')
-    for (var i = 0; i < 1e7; i++) {
+    for (var i = 0; i < 2e1; i++) {
       var {id, images, rooms, occupancy, reviews, ratings, price, mismo} = createListing()
-      console.log(`"{${images[0]}, ${images[1]}, ${images[2]}, ${images[3]}, ${images[4]}, ${images[5]}, ${images[6]}, ${images[7]}, ${images[8]}, ${images[9]}}",`, rooms, ',', occupancy, ',', reviews, ',', ratings, ',', price, `, "{${mismo[0]}, ${mismo[1]}, ${mismo[2]}, ${mismo[3]}, ${mismo[4]}}"`)
-      // , ${images[1]}, ${images[2]}, ${images[3]}, {${images[4]}, ${images[5]}, ${images[6]}, ${images[7]}, ${images[8]}, ${images[9]}}",`, rooms, ',', occupancy, ',', reviews, ',', ratings, ',', price, `, "{${mismo[0]}, ${mismo[1]}, ${mismo[2]}, ${mismo[3]}, ${mismo[4]}}
-      //{${images[0]},${images[1]},${images[2]},${images[3]},${images[4]},${images[5]},${images[6]},${images[7]},${images[8]},${images[9]}}  ${occupancy} ${reviews} ${ratings} ${donde} ${price}
-      // const req = {
-      //   body: createListing()
-      // }
-      //mill(req);
+      console.log(`${id}, "{${images[0]}, ${images[1]}, ${images[2]}, ${images[3]}, ${images[4]}, ${images[5]}, ${images[6]}, ${images[7]}, ${images[8]}, ${images[9]}}",`, rooms, ',', occupancy, ',', reviews, ',', ratings, ',', price, `, "{${mismo[0]}, ${mismo[1]}, ${mismo[2]}, ${mismo[3]}, ${mismo[4]}}"`)
     }
-    // console.log('UPDATE timer set time2=now()::time;')
-    // console.log('SELECT time2-time1 as time_Elapsed from timer;')
-    //, rooms, occupancy, reviews, ratings, price, mismo
   }
   seeder();
 };

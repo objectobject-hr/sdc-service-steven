@@ -10,7 +10,7 @@ const Slide = ({ listing }) => {
     price,
     ratings,
     reviews
-  } = listing;
+  } = listing.rows[0];
   let idx = randomNum(images.length);
   return (
     <div className="similar-slide">
