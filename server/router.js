@@ -1,26 +1,30 @@
 const router = require('express').Router();
 const pg = require('../db/postgres.js');
-const mg = require('../db');
+const mg = require('../db').carrusel;
 
 
-// Postgres db routes.`
-router
-  .route('/carousel-service')
-  .get(pg.getAll)
-  .post(pg.mill)
+// Postgres db routes.
+// router
+//   .route('/carousel-service')
+//   .get(pg.getAll)
+//   .post(pg.mill)
   
-router
-  .route('/carousel-service/:id')
-  .get(pg.getById);
+// router
+//   .route('/carousel-service/:id')
+//   .get(pg.getById);
   
+  // MongoDB routes.
+  router
+    .route('/carousel-service/:id')
+    .get((req, res) => {
+      let listingId = req.params.id;
+      mg.find({listingid: listingId}, (err, data) => {
+        if (err) {
+          return res.status(404).end();
+        }
+        console.log(data)
+        res.status(200).send(data[0]);
+      });
+    });
+
 module.exports = router;
-
-// app.get('/carousel-service/:id', (req, res) => {
-//     let listingID = req.params.id;
-//     Listing.find({listingID: listingID}, (err, listing) => {
-//       if (err) {
-//         return res.status(404).end();
-//       }
-//       res.status(200).send(listing[0]);
-//     });
-//   });

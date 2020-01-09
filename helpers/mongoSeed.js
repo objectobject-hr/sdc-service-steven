@@ -1,4 +1,5 @@
 const mill = require('../db').mill;
+const Listing = require('../db').Listing;
 
 const seedDB = () => {
   const randomNum = max => {
@@ -38,6 +39,11 @@ const seedDB = () => {
   const seeder = () => {
     for (var i = 0; i < 1e1; i++) {
       var {id, images, rooms, occupancy, reviews, ratings, price, mismo} = createListing()
+      let newListing = new Listing(createListing(i+1));
+//     newListing.save((err, listing) => {
+//       if (err) {
+//         return console.error(err);
+//       }
       console.log(`"{${images[0]}, ${images[1]}, ${images[2]}, ${images[3]}, ${images[4]}, ${images[5]}, ${images[6]}, ${images[7]}, ${images[8]}, ${images[9]}}",`, rooms, ',', occupancy, ',', reviews, ',', ratings, ',', price, `, "{${mismo[0]}, ${mismo[1]}, ${mismo[2]}, ${mismo[3]}, ${mismo[4]}}"`)
     }
   }
