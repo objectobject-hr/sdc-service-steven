@@ -16,6 +16,17 @@ const getById = (req, res) => {
   });
 }
 
+const postById = (req, res) => {
+  pool.query(`INSERT INTO carrusel (images, rooms, occupancy, reviews, ratings, price, mismo) VALUES (ARRAY ['https://odis.homeaway.com/odis/listing/41f832e5-2b11-40f9-a025-81fef22082eb.f10.jpg'], 2, 4, 9, 5, 60, ARRAY [1,2,3,4,5]);`, (err) => {
+    if (err) {
+      console.error(err);
+      res.status(400).end()
+    } else {
+      res.status(201).send()
+    }
+  })
+}
+
 const getAll = (req, res) => {
   pool.query('SELECT * FROM carrusel', (error, results) => {
     if (error) {
@@ -33,3 +44,4 @@ const mill = (req) => {
 module.exports.getAll = getAll
 module.exports.mill = mill
 module.exports.getById = getById
+module.exports.postById = postById

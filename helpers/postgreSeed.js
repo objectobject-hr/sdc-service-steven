@@ -36,7 +36,7 @@ const seedDB = () => {
   };
   // seeder
   const seeder = () => {
-    for (var i = 0; i < 1e2; i++) {
+    for (var i = 0; i < 1e7; i++) {
       var {id, images, rooms, occupancy, reviews, ratings, price, mismo} = createListing()
       console.log(`${id}, "{${images[0]}, ${images[1]}, ${images[2]}, ${images[3]}, ${images[4]}, ${images[5]}, ${images[6]}, ${images[7]}, ${images[8]}, ${images[9]}}",`, rooms, ',', occupancy, ',', reviews, ',', ratings, ',', price, `, "{${mismo[0]}, ${mismo[1]}, ${mismo[2]}, ${mismo[3]}, ${mismo[4]}}"`)
     }

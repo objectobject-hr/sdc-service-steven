@@ -6,3 +6,4 @@ dist/styles.css.map
 yarn-error.log
 data.csv
 test.csv
+newrelic.js
